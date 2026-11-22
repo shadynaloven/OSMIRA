@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#176B63" />
+  <meta name="description" content="OSMIRA membantu masyarakat mengenali risiko gangguan ginjal dan memahami kesehatan ginjal." />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icons/icon-192.svg" type="image/svg+xml" />
+<title>OSMIRA — Kidney Health Companion</title>
+<style>
+:root{
+  --teal:#176B63; --teal-dark:#104E49; --mint:#70B9AA; --pale:#EAF5F2;
+  --cream:#F8FAF8; --ink:#203331; --muted:#71817D; --line:#E3ECE8;
+  --orange:#E7A45C; --red:#C85E5E; --white:#fff; --shadow:0 12px 35px rgba(25,74,67,.08);
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:#F3F7F5;color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+button,input{font:inherit} button{cursor:pointer}
+.app{max-width:1180px;margin:auto;min-height:100vh;display:grid;grid-template-columns:250px 1fr;background:var(--cream);box-shadow:0 0 60px #244a4010}
+.sidebar{background:#fff;border-right:1px solid var(--line);padding:28px 18px;display:flex;flex-direction:column;gap:28px}
+.brand{display:flex;align-items:center;gap:11px;padding:0 8px}
+.brand-mark{width:42px;height:42px;border-radius:14px;background:var(--teal);display:grid;place-items:center;color:#fff;font-size:22px}
+.brand-name{font-size:22px;font-weight:800;letter-spacing:1.7px;color:var(--teal-dark)}
+.brand-sub{font-size:10px;color:var(--muted);letter-spacing:1.2px;margin-top:2px}
+.nav-label{font-size:10px;letter-spacing:1.5px;color:#9AA9A4;font-weight:800;padding:0 12px;margin-bottom:8px}
+.nav{display:grid;gap:6px}
+.nav button{border:0;background:transparent;color:#63736F;text-align:left;padding:12px 13px;border-radius:12px;display:flex;align-items:center;gap:12px;font-weight:600;font-size:13px}
+.nav button:hover,.nav button.active{background:var(--pale);color:var(--teal)}
+.nav .ico{width:20px;text-align:center;font-size:17px}
+.side-note{margin-top:auto;background:#F1F7F5;border-radius:17px;padding:16px;font-size:12px;color:#5D716C;line-height:1.6}
+.side-note strong{display:block;color:var(--teal-dark);font-size:13px;margin-bottom:5px}
+main{padding:28px 34px 50px;min-width:0}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:27px}
+.eyebrow{font-size:11px;color:var(--muted);letter-spacing:1.5px;font-weight:800;text-transform:uppercase}
+.topbar h1{font-size:25px;margin:5px 0 0;letter-spacing:-.6px}
+.profile{width:39px;height:39px;border-radius:50%;background:#DDEEE9;color:var(--teal);display:grid;place-items:center;font-weight:800}
+.page{display:none;animation:fade .22s ease}.page.active{display:block}
+@keyframes fade{from{opacity:.3;transform:translateY(5px)}to{opacity:1;transform:none}}
+.hero{background:linear-gradient(120deg,#155F57,#267F73);border-radius:24px;padding:30px;color:#fff;position:relative;overflow:hidden;min-height:220px;display:flex;align-items:center}
+.hero:after{content:"";position:absolute;width:270px;height:270px;border:1px solid #ffffff25;border-radius:50%;right:-55px;top:-70px;box-shadow:0 0 0 28px #ffffff0c,0 0 0 58px #ffffff08}
+.hero-copy{position:relative;z-index:1;max-width:540px}
+.hero .tag{font-size:10px;letter-spacing:1.6px;font-weight:800;color:#C4E6DE}
+.hero h2{font-size:31px;line-height:1.16;margin:12px 0 10px;letter-spacing:-.8px}
+.hero p{font-size:13px;line-height:1.7;color:#E0F0EC;max-width:440px;margin:0 0 18px}
+.primary,.secondary{border:0;border-radius:11px;padding:11px 16px;font-size:12px;font-weight:800}
+.primary{background:#fff;color:var(--teal-dark)}.secondary{background:var(--teal);color:#fff}
+.hero .primary{box-shadow:0 5px 15px #0c383344}
+.section-head{display:flex;justify-content:space-between;align-items:end;margin:28px 0 14px}
+.section-head h3{margin:0;font-size:16px}.section-head span{font-size:11px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.card{background:#fff;border:1px solid var(--line);border-radius:17px;padding:17px;box-shadow:0 4px 18px #244a4005}
+.card-icon{width:38px;height:38px;border-radius:12px;background:var(--pale);display:grid;place-items:center;font-size:18px;margin-bottom:13px}
+.card h4{margin:0 0 6px;font-size:14px}.card p{margin:0;color:var(--muted);font-size:11px;line-height:1.6}
+.card .arrow{color:var(--teal);font-size:11px;font-weight:800;display:inline-block;margin-top:14px}
+.info-strip{display:flex;gap:12px;align-items:flex-start;background:#FFF7EB;border:1px solid #F5E7D1;border-radius:15px;padding:14px 16px;margin-top:18px;color:#80633E;font-size:11px;line-height:1.6}
+.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin-bottom:16px}
+.panel h3{margin:0 0 8px;font-size:17px}.panel p{font-size:12px;color:var(--muted);line-height:1.7}
+.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.choice{border:1px solid var(--line);border-radius:16px;padding:20px;background:#fff;text-align:left}
+.choice:hover{border-color:var(--mint);background:#F8FCFA}
+.choice .big{font-size:25px}.choice h4{margin:10px 0 5px}.choice p{margin:0}
+.progress{height:6px;background:#EAF0ED;border-radius:9px;overflow:hidden;margin:15px 0 20px}.progress span{height:100%;display:block;background:var(--mint);width:0;transition:.2s}
+.question{font-size:16px;font-weight:750;margin:0 0 14px}
+.options{display:grid;gap:9px}
+.option{display:flex;align-items:center;gap:10px;padding:12px;border:1px solid var(--line);border-radius:12px;font-size:12px;cursor:pointer}
+.option:has(input:checked){border-color:var(--teal);background:var(--pale)}
+.option input{accent-color:var(--teal)}
+.actions{display:flex;justify-content:space-between;gap:10px;margin-top:20px}
+.result{border-radius:16px;padding:20px;background:var(--pale);margin-top:15px}
+.result h3{margin:0 0 8px}.result p{margin:5px 0}
+.pills{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
+.pill{font-size:10px;padding:6px 9px;border-radius:20px;background:#EDF5F2;color:var(--teal);font-weight:700}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.edu-card{border:1px solid var(--line);border-radius:16px;padding:18px;background:#fff}
+.edu-card h4{margin:8px 0}.edu-card p{font-size:12px;color:var(--muted);line-height:1.7;margin:0}
+ul.clean{padding-left:18px;color:#63736F;font-size:12px;line-height:1.9}
+.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:11px;font-weight:800;color:#536660}
+.field input,.field select{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink);outline:none}
+.field input:focus,.field select:focus{border-color:var(--mint)}
+.small{font-size:10px!important;color:#899792!important;line-height:1.6}
+.footer{text-align:center;color:#9AA8A3;font-size:10px;margin-top:28px}
+.mobile-nav{display:none}
+@media(max-width:800px){
+ .app{display:block}.sidebar{display:none}main{padding:22px 17px 90px}.topbar h1{font-size:22px}
+ .hero{padding:24px;min-height:230px}.hero h2{font-size:27px}.cards{grid-template-columns:1fr 1fr}
+ .mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);justify-content:space-around;padding:9px 3px calc(9px + env(safe-area-inset-bottom));z-index:10}
+ .mobile-nav button{border:0;background:none;color:#71817D;font-size:10px;display:grid;gap:3px;justify-items:center}.mobile-nav button.active{color:var(--teal);font-weight:800}
+ .mobile-nav b{font-size:18px}.edu-grid{grid-template-columns:1fr}
+}
+@media(max-width:430px){.cards,.choice-grid{grid-template-columns:1fr}.hero h2{font-size:25px}.panel{padding:17px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="brand-mark">◉</div><div><div class="brand-name">OSMIRA</div><div class="brand-sub">KIDNEY HEALTH COMPANION</div></div></div>
+  <div><div class="nav-label">MENU UTAMA</div><nav class="nav">
+    <button class="active" data-page="home"><span class="ico">⌂</span>Beranda</button>
+    <button data-page="screening"><span class="ico">☷</span>Skrining Risiko</button>
+    <button data-page="learn"><span class="ico">✧</span>Kenali Ginjal</button>
+    <button data-page="labs"><span class="ico">⌁</span>Pahami Hasil Lab</button>
+    <button data-page="prevention"><span class="ico">♡</span>Pencegahan</button>
+  </nav></div>
+  <div class="side-note"><strong>Small steps, healthier kidneys.</strong>Informasi yang tepat dapat membantu kita lebih peduli terhadap kesehatan ginjal. OSMIRA bukan pengganti konsultasi dokter.</div>
+</aside>
+<main>
+  <header class="topbar"><div><div class="eyebrow">KIDNEY HEALTH • WELLNESS</div><h1 id="pageTitle">Selamat datang di OSMIRA</h1></div><div class="profile">O</div></header>
+
+  <section class="page active" id="home">
+    <div class="hero"><div class="hero-copy"><div class="tag">YOUR KIDNEY HEALTH MATTERS</div><h2>Kenali ginjalmu.<br>Jaga kesehatanmu.</h2><p>Temukan informasi kesehatan ginjal, kenali faktor risiko AKI dan CKD, serta pelajari langkah sederhana untuk menjaga ginjal tetap sehat.</p><button class="primary" onclick="go('screening')">Mulai skrining risiko&nbsp; →</button></div></div>
+    <div class="section-head"><h3>Jelajahi OSMIRA</h3><span>Everything starts with awareness</span></div>
+    <div class="cards">
+      <div class="card" onclick="go('screening')" role="button"><div class="card-icon">☷</div><h4>Skrining Risiko</h4><p>Kenali faktor risiko gangguan ginjal melalui pertanyaan singkat.</p><span class="arrow">Mulai skrining →</span></div>
+      <div class="card" onclick="go('learn')" role="button"><div class="card-icon">✧</div><h4>Edukasi Ginjal</h4><p>Pelajari perbedaan AKI dan CKD serta tanda yang perlu diwaspadai.</p><span class="arrow">Pelajari →</span></div>
+      <div class="card" onclick="go('labs')" role="button"><div class="card-icon">⌁</div><h4>Interpretasi Lab</h4><p>Kenali istilah kreatinin, eGFR, dan albumin urine.</p><span class="arrow">Lihat panduan →</span></div>
+    </div>
+    <div class="info-strip"><span>ⓘ</span><div><b>Ingat:</b> Penyakit ginjal dapat tidak menimbulkan gejala pada tahap awal. Pemeriksaan dan konsultasi tenaga kesehatan penting, terutama jika memiliki faktor risiko.</div></div>
+  </section>
+
+  <section class="page" id="screening">
+    <div class="panel" id="screenStart"><div class="eyebrow">KIDNEY RISK CHECK</div><h3>Skrining Risiko Kesehatan Ginjal</h3><p>Pilih jenis skrining yang ingin dipelajari. Kuesioner ini bersifat edukatif dan tidak dapat menegakkan diagnosis.</p>
+      <div class="choice-grid">
+        <button class="choice" onclick="startQuiz('aki')"><div class="big">⚡</div><h4>Risiko AKI</h4><p>Acute Kidney Injury atau cedera ginjal akut.</p></button>
+        <button class="choice" onclick="startQuiz('ckd')"><div class="big">♡</div><h4>Risiko CKD</h4><p>Chronic Kidney Disease atau penyakit ginjal kronis.</p></button>
+      </div>
+    </div>
+    <div class="panel" id="quizPanel" hidden>
+      <div class="eyebrow" id="quizLabel">SCREENING</div><h3 id="quizHeading">Skrining</h3><div class="progress"><span id="progressBar"></span></div>
+      <div id="questionArea"></div>
+      <div class="actions"><button class="secondary" id="backBtn" onclick="prevQuestion()">Kembali</button><button class="secondary" id="nextBtn" onclick="nextQuestion()">Lanjut →</button></div>
+      <p class="small">Jawaban hanya digunakan untuk menampilkan edukasi umum pada prototype ini.</p>
+    </div>
+    <div class="panel" id="quizResult" hidden></div>
+  </section>
+
+  <section class="page" id="learn">
+    <div class="panel"><div class="eyebrow">KIDNEY KNOWLEDGE</div><h3>Kenali kondisi kesehatan ginjal</h3><p>Ginjal menyaring darah, membuang zat sisa dan kelebihan cairan, serta membantu menjaga keseimbangan elektrolit dan tekanan darah.</p></div>
+    <div class="edu-grid">
+      <article class="edu-card"><div class="card-icon">⚡</div><h4>Acute Kidney Injury (AKI)</h4><p>Penurunan fungsi ginjal yang terjadi secara cepat, dalam hitungan jam hingga hari. Penyebabnya antara lain dehidrasi berat, infeksi berat, penurunan aliran darah ke ginjal, atau sumbatan saluran kemih.</p><ul class="clean"><li>Jumlah urine berkurang</li><li>Pembengkakan atau sesak</li><li>Mual, lemas, atau kebingungan pada kondisi berat</li></ul></article>
+      <article class="edu-card"><div class="card-icon">♡</div><h4>Chronic Kidney Disease (CKD)</h4><p>Kelainan struktur atau fungsi ginjal yang berlangsung minimal 3 bulan dan berdampak pada kesehatan. Kondisi ini dapat berkembang perlahan.</p><ul class="clean"><li>Sering tidak bergejala pada tahap awal</li><li>Dapat disertai hipertensi atau diabetes</li><li>Perlu evaluasi eGFR dan albumin urine</li></ul></article>
+    </div>
+    <div class="info-strip"><span>⚠</span><div><b>Segera cari pertolongan medis</b> jika urine sangat berkurang/tidak keluar, sesak napas, bengkak yang cepat memburuk, penurunan kesadaran, atau kondisi umum memburuk. Jangan menunggu hasil skrining aplikasi.</div></div>
+  </section>
+
+  <section class="page" id="labs">
+    <div class="panel"><div class="eyebrow">UNDERSTAND YOUR LABS</div><h3>Memahami pemeriksaan ginjal</h3><p>Masukkan atau pilih istilah pemeriksaan untuk membaca penjelasan singkat. Hasil laboratorium harus dinilai bersama kondisi klinis oleh tenaga kesehatan.</p>
+      <div class="field"><label>Pilih pemeriksaan</label><select id="labSelect" onchange="showLab()"><option value="creatinine">Kreatinin serum</option><option value="egfr">eGFR</option><option value="uacr">UACR (rasio albumin-kreatinin urine)</option><option value="urinalysis">Urinalisis</option></select></div>
+      <div class="result" id="labInfo"></div>
+    </div>
+    <div class="panel"><h3>Kategori eGFR pada CKD</h3><p>Kategori berikut membantu memahami klasifikasi fungsi filtrasi ginjal. Angka eGFR saja tidak cukup untuk menetapkan CKD tanpa bukti kelainan ginjal dan durasi yang sesuai.</p>
+      <div class="pills"><span class="pill">G1 ≥90</span><span class="pill">G2 60–89</span><span class="pill">G3a 45–59</span><span class="pill">G3b 30–44</span><span class="pill">G4 15–29</span><span class="pill">G5 &lt;15</span></div>
+      <p class="small">Satuan eGFR: mL/menit/1,73 m². Kategori albuminuria UACR: A1 &lt;30, A2 30–300, A3 &gt;300 mg/g.</p>
+    </div>
+  </section>
+
+  <section class="page" id="prevention">
+    <div class="panel"><div class="eyebrow">EVERYDAY KIDNEY CARE</div><h3>Langkah sederhana menjaga ginjal</h3><p>Kebiasaan sehat dapat membantu menurunkan risiko gangguan ginjal. Sesuaikan langkah pencegahan dengan kondisi dan saran tenaga kesehatan.</p></div>
+    <div class="edu-grid">
+      <article class="edu-card"><div class="card-icon">🥗</div><h4>Pola makan seimbang</h4><p>Konsumsi makanan beragam, batasi garam berlebihan, dan perhatikan asupan sesuai kebutuhan tubuh.</p></article>
+      <article class="edu-card"><div class="card-icon">🩺</div><h4>Kontrol penyakit penyerta</h4><p>Pantau tekanan darah dan gula darah, terutama bila memiliki hipertensi atau diabetes.</p></article>
+      <article class="edu-card"><div class="card-icon">💊</div><h4>Bijak menggunakan obat</h4><p>Hindari penggunaan obat pereda nyeri tertentu secara sembarangan dan konsultasikan obat atau suplemen kepada tenaga kesehatan.</p></article>
+      <article class="edu-card"><div class="card-icon">🚶</div><h4>Aktif dan tidak merokok</h4><p>Lakukan aktivitas fisik sesuai kemampuan, jaga berat badan, dan hindari rokok.</p></article>
+      <article class="edu-card"><div class="card-icon">💧</div><h4>Cukupi cairan sesuai kondisi</h4><p>Kebutuhan cairan berbeda pada setiap orang. Ikuti anjuran dokter, terutama bila memiliki penyakit jantung atau ginjal.</p></article>
+      <article class="edu-card"><div class="card-icon">🔬</div><h4>Lakukan pemeriksaan</h4><p>Diskusikan pemeriksaan kreatinin/eGFR dan albumin urine jika memiliki faktor risiko atau keluhan.</p></article>
+    </div>
+  </section>
+  <div class="footer">OSMIRA © 2026 · Educational prototype · Bukan alat diagnosis atau pengganti konsultasi medis.</div>
+</main>
+</div>
+<nav class="mobile-nav">
+  <button class="active" data-page="home"><b>⌂</b>Beranda</button><button data-page="screening"><b>☷</b>Skrining</button><button data-page="learn"><b>✧</b>Edukasi</button><button data-page="labs"><b>⌁</b>Lab</button><button data-page="prevention"><b>♡</b>Cegah</button>
+</nav>
+<script>
+const titles={home:'Selamat datang di OSMIRA',screening:'Skrining Risiko Ginjal',learn:'Kenali Kesehatan Ginjal',labs:'Pahami Hasil Pemeriksaan',prevention:'Jaga Kesehatan Ginjal'};
+function go(page){
+ document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===page));
+ document.querySelectorAll('[data-page]').forEach(b=>b.classList.toggle('active',b.dataset.page===page));
+ document.getElementById('pageTitle').textContent=titles[page];
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('[data-page]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.page)));
+const quizData={
+ aki:[
+  {q:'Apakah dalam beberapa hari terakhir Anda mengalami muntah atau diare berat?',o:['Ya','Tidak','Tidak yakin']},
+  {q:'Apakah Anda sedang mengalami demam tinggi atau infeksi berat?',o:['Ya','Tidak','Tidak yakin']},
+  {q:'Apakah jumlah urine Anda terasa jauh lebih sedikit dari biasanya?',o:['Ya','Tidak','Tidak yakin']},
+  {q:'Apakah Anda mengalami kondisi yang menyebabkan kehilangan banyak cairan, misalnya perdarahan atau luka bakar luas?',o:['Ya','Tidak','Tidak yakin']},
+  {q:'Apakah Anda menggunakan obat atau suplemen tanpa berkonsultasi dengan tenaga kesehatan?',o:['Ya','Tidak','Tidak yakin']}
+ ],
+ ckd:[
+  {q:'Apakah Anda pernah didiagnosis menderita diabetes?',o:['Ya','Tidak','Tidak tahu']},
+  {q:'Apakah Anda pernah didiagnosis menderita tekanan darah tinggi (hipertensi)?',o:['Ya','Tidak','Tidak tahu']},
+  {q:'Apakah ada anggota keluarga dekat dengan penyakit ginjal?',o:['Ya','Tidak','Tidak tahu']},
+  {q:'Apakah Anda pernah diberi tahu bahwa hasil pemeriksaan ginjal atau urine tidak normal?',o:['Ya','Tidak','Tidak tahu']},
+  {q:'Apakah Anda memiliki riwayat penyakit jantung atau penyakit pembuluh darah?',o:['Ya','Tidak','Tidak tahu']}
+ ]
+};
+let activeType='',idx=0,answers=[];
+function startQuiz(type){
+ activeType=type;idx=0;answers=Array(quizData[type].length).fill('');
+ document.getElementById('screenStart').hidden=true;document.getElementById('quizResult').hidden=true;document.getElementById('quizPanel').hidden=false;
+ document.getElementById('quizLabel').textContent=type==='aki'?'ACUTE KIDNEY INJURY':'CHRONIC KIDNEY DISEASE';
+ document.getElementById('quizHeading').textContent=type==='aki'?'Skrining Faktor Risiko AKI':'Skrining Faktor Risiko CKD';
+ renderQuestion();
+}
+function renderQuestion(){
+ const q=quizData[activeType][idx];
+ document.getElementById('progressBar').style.width=((idx+1)/quizData[activeType].length*100)+'%';
+ document.getElementById('questionArea').innerHTML=`<div class="eyebrow">PERTANYAAN ${idx+1} DARI ${quizData[activeType].length}</div><p class="question">${q.q}</p><div class="options">${q.o.map((o,i)=>`<label class="option"><input type="radio" name="answer" value="${o}" ${answers[idx]===o?'checked':''}>${o}</label>`).join('')}</div>`;
+ document.getElementById('backBtn').disabled=idx===0;
+ document.getElementById('nextBtn').textContent=idx===quizData[activeType].length-1?'Lihat hasil':'Lanjut →';
+}
+function nextQuestion(){
+ const selected=document.querySelector('input[name="answer"]:checked');
+ if(!selected){alert('Silakan pilih salah satu jawaban.');return}
+ answers[idx]=selected.value;
+ if(idx<quizData[activeType].length-1){idx++;renderQuestion()}else{showResult()}
+}
+function prevQuestion(){if(idx>0){idx--;renderQuestion()}}
+function showResult(){
+ const yes=answers.filter(a=>a==='Ya').length;
+ const panel=document.getElementById('quizResult');panel.hidden=false;document.getElementById('quizPanel').hidden=true;
+ let msg= yes>0
+ ? 'Terdapat jawaban yang menunjukkan faktor risiko atau kondisi yang perlu diperhatikan. Pertimbangkan untuk berkonsultasi dengan tenaga kesehatan guna menentukan apakah pemeriksaan lebih lanjut diperlukan.'
+ : 'Tidak ada jawaban “Ya” pada pertanyaan ini. Namun, hasil ini tidak menyingkirkan kemungkinan gangguan ginjal. Tetap perhatikan faktor risiko, gejala, dan lakukan pemeriksaan sesuai anjuran tenaga kesehatan.';
+ panel.innerHTML=`<div class="eyebrow">HASIL EDUKASI SKRINING</div><h3>${yes>0?'Ada hal yang perlu diperhatikan':'Terima kasih telah mengisi skrining'}</h3><div class="result"><b>${yes} dari ${answers.length} jawaban “Ya”</b><p>${msg}</p></div><p class="small">OSMIRA tidak menghitung probabilitas penyakit dan tidak memberikan diagnosis. Skrining ini bukan instrumen klinis tervalidasi.</p><div class="actions"><button class="secondary" onclick="resetQuiz()">Ulangi skrining</button><button class="primary" onclick="go('learn')">Baca edukasi →</button></div>`;
+}
+function resetQuiz(){document.getElementById('screenStart').hidden=false;document.getElementById('quizPanel').hidden=true;document.getElementById('quizResult').hidden=true}
+const labText={
+ creatinine:['Kreatinin serum','Kreatinin merupakan zat sisa metabolisme otot yang dibuang melalui ginjal. Kadar kreatinin darah dapat meningkat ketika fungsi filtrasi ginjal menurun, tetapi juga dipengaruhi massa otot, usia, pola makan, dan faktor lain. Nilai perlu dibandingkan dengan hasil sebelumnya dan kondisi klinis.'],
+ egfr:['Estimated Glomerular Filtration Rate (eGFR)','eGFR adalah perkiraan kemampuan ginjal menyaring darah. Nilai yang lebih rendah dapat menunjukkan penurunan fungsi ginjal. Untuk menilai CKD, kelainan harus menetap minimal 3 bulan atau terdapat penanda kerusakan ginjal yang relevan.'],
+ uacr:['Urine Albumin-to-Creatinine Ratio (UACR)','UACR mengukur albumin dalam urine dibandingkan kreatinin urine. Albumin yang meningkat dapat menjadi penanda kerusakan ginjal, bahkan ketika eGFR masih relatif baik. Hasil dapat dipengaruhi kondisi sementara seperti demam, olahraga berat, atau infeksi saluran kemih.'],
+ urinalysis:['Urinalisis','Urinalisis memeriksa karakteristik urine, termasuk protein, darah, glukosa, dan sedimen. Hasil abnormal dapat membantu mengarahkan evaluasi, tetapi tidak selalu berarti terdapat penyakit ginjal. Interpretasikan bersama gejala dan pemeriksaan lain.']
+};
+function showLab(){const d=labText[document.getElementById('labSelect').value];document.getElementById('labInfo').innerHTML=`<h3>${d[0]}</h3><p>${d[1]}</p>`}
+showLab();
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js').catch(err => console.log('SW:', err));
+  });
+}
+</script>
+</body>
+</html>
