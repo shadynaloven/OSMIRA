@@ -1,0 +1,1427 @@
+
+/* =========================
+   OSMIRA - MAIN DESIGN
+========================= */
+
+:root {
+  --primary: #176B63;
+  --primary-dark: #10564F;
+  --mint: #E7F2EF;
+  --background: #F7FAF9;
+  --white: #FFFFFF;
+  --text: #233B38;
+  --muted: #82918E;
+  --border: #E7EEEB;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--background);
+  color: var(--text);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.app-container {
+  max-width: 1100px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 24px;
+  padding-bottom: 110px;
+}
+
+/* HEADER */
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.brand-icon {
+  width: 43px;
+  height: 43px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: var(--primary);
+  color: white;
+  font-size: 24px;
+}
+
+.brand h1 {
+  font-size: 21px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: var(--primary);
+}
+
+.brand p {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+.header-badge {
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--primary);
+  background: var(--mint);
+  padding: 9px 13px;
+  border-radius: 30px;
+  font-weight: 700;
+}
+
+/* WELCOME */
+
+.welcome {
+  background: linear-gradient(120deg, #176B63, #378C7D);
+  border-radius: 25px;
+  padding: 35px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  min-height: 245px;
+}
+
+.eyebrow {
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #C4E7DD;
+}
+
+.welcome h2 {
+  font-size: clamp(25px, 4vw, 37px);
+  line-height: 1.25;
+  margin: 15px 0;
+}
+
+.welcome h2 span {
+  color: #BDE8D9;
+}
+
+.welcome p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #E1F3ED;
+  max-width: 370px;
+}
+
+.kidney-illustration {
+  font-size: 100px;
+  background: rgba(255,255,255,0.13);
+  width: 155px;
+  height: 155px;
+  min-width: 155px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-left: 20px;
+}
+
+/* INTRO */
+
+.intro-section {
+  margin: 35px 0 20px;
+}
+
+.section-label {
+  font-size: 10px;
+  letter-spacing: 1.8px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.intro-section h2,
+.content-header h2 {
+  font-size: 24px;
+  margin: 8px 0;
+}
+
+.intro-section p,
+.content-header p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* MENU GRID */
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.menu-card {
+  text-align: left;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 19px;
+  padding: 22px;
+  min-height: 190px;
+  position: relative;
+  transition: 0.2s;
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  border-color: #9AC9BC;
+  box-shadow: 0 10px 25px rgba(23,107,99,0.08);
+}
+
+.menu-icon {
+  width: 47px;
+  height: 47px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  font-size: 23px;
+  margin-bottom: 17px;
+}
+
+.mint { background: #E6F4EE; }
+.peach { background: #FFF0E9; }
+.blue { background: #EAF2FC; }
+.lavender { background: #F0ECFC; }
+.yellow { background: #FFF6DD; }
+.pink { background: #FCECF2; }
+
+.menu-card h3 {
+  font-size: 15px;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.menu-card p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+  max-width: 200px;
+}
+
+.menu-arrow {
+  position: absolute;
+  top: 23px;
+  right: 20px;
+  color: var(--primary);
+  font-size: 20px;
+}
+
+/* REMINDER */
+
+.reminder-card {
+  margin-top: 25px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  padding: 20px;
+  background: var(--mint);
+  border-radius: 17px;
+}
+
+.reminder-icon {
+  font-size: 30px;
+}
+
+.reminder-card h3 {
+  font-size: 14px;
+  color: var(--primary);
+  margin-bottom: 5px;
+}
+
+.reminder-card p {
+  font-size: 11px;
+  color: #56756D;
+  line-height: 1.6;
+}
+
+/* PAGE NAVIGATION */
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+.back-button {
+  border: none;
+  background: var(--mint);
+  color: var(--primary);
+  padding: 11px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+
+.content-header {
+  margin-bottom: 25px;
+}
+
+.content-body-card {
+  padding: 25px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  line-height: 1.8;
+}
+
+.content-body-card p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* BOTTOM NAV */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100%, 650px);
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 10px 18px;
+  box-shadow: 0 -5px 25px rgba(0,0,0,0.04);
+  z-index: 10;
+}
+
+.nav-item {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 60px;
+}
+
+.nav-item span {
+  font-size: 23px;
+}
+
+.nav-item small {
+  font-size: 10px;
+}
+
+.nav-item.active {
+  color: var(--primary);
+  font-weight: 800;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 650px) {
+
+  .app-container {
+    padding: 18px;
+    padding-bottom: 100px;
+  }
+
+  .header-badge {
+    display: none;
+  }
+
+  .welcome {
+    padding: 25px 20px;
+    min-height: 220px;
+  }
+
+  .welcome p {
+    max-width: 230px;
+  }
+
+  .kidney-illustration {
+    font-size: 58px;
+    width: 90px;
+    height: 90px;
+    min-width: 90px;
+    margin-left: 5px;
+  }
+
+  .menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 11px;
+  }
+
+  .menu-card {
+    padding: 16px;
+    min-height: 180px;
+  }
+
+  .menu-card h3 {
+    font-size: 13px;
+  }
+
+  .menu-card p {
+    font-size: 10px;
+  }
+
+  .menu-arrow {
+    top: 18px;
+    right: 13px;
+  }
+
+}
+
+@media (max-width: 370px) {
+  .welcome h2 {
+    font-size: 23px;
+  }
+
+  .kidney-illustration {
+    display: none;
+  }
+}
+
+/* =================================
+   KIDNEY 101 - EDUCATION DESIGN
+================================= */
+
+.education-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.education-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 23px;
+}
+
+.education-card h3 {
+  font-size: 20px;
+  margin: 9px 0 12px;
+  color: var(--text);
+}
+
+.education-card h4 {
+  font-size: 14px;
+  margin: 20px 0 12px;
+}
+
+.education-card > p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.9;
+  margin-bottom: 12px;
+}
+
+.fact-box {
+  background: var(--mint);
+  padding: 17px;
+  border-radius: 13px;
+  margin-top: 17px;
+}
+
+.fact-box strong {
+  color: var(--primary);
+  font-size: 13px;
+}
+
+.fact-box p {
+  color: #56756D;
+  font-size: 12px;
+  line-height: 1.8;
+  margin-top: 6px;
+}
+
+
+/* ANATOMY */
+
+.anatomy-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0;
+  align-items: center;
+}
+
+.kidney-shape {
+  background: linear-gradient(145deg, #E7F2EF, #D3EAE2);
+  border-radius: 20px;
+  min-height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  overflow: hidden;
+}
+
+.kidney-anatomy-image {
+  width: 100%;
+  max-width: 320px;
+  height: 230px;
+  object-fit: contain;
+  display: block;
+  border-radius: 12px;
+}
+
+.anatomy-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.anatomy-button {
+  border: 1px solid var(--border);
+  background: white;
+  padding: 11px;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  transition: 0.2s;
+}
+
+.anatomy-button:hover,
+.anatomy-button.selected {
+  background: var(--mint);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.detail-box {
+  background: #F7FAF9;
+  padding: 17px;
+  border-radius: 13px;
+  border-left: 4px solid var(--primary);
+}
+
+.detail-box strong {
+  color: var(--primary);
+  font-size: 14px;
+}
+
+.detail-box p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+  margin-top: 7px;
+}
+
+/* RESPONSIVE ANATOMY */
+
+@media (max-width: 450px) {
+  .education-card {
+    padding: 17px;
+  }
+
+  .anatomy-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .kidney-shape {
+    min-height: 190px;
+  }
+
+  .kidney-anatomy-image {
+    height: 180px;
+  }
+}
+
+
+/* KIDNEY FUNCTIONS */
+
+.function-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.function-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  padding: 13px;
+  border: 1px solid var(--border);
+  border-radius: 13px;
+}
+
+.function-item > span {
+  font-size: 23px;
+}
+
+.function-item strong {
+  font-size: 13px;
+}
+
+.function-item p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+  margin-top: 5px;
+}
+
+/* FILTRATION */
+
+.filtration-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+  margin-top: 20px;
+}
+
+.filtration-step {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+}
+
+.step-number {
+  min-width: 30px;
+  height: 30px;
+  background: var(--primary);
+  color: white;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.filtration-step strong {
+  font-size: 13px;
+}
+
+.filtration-step p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+/* NEPHRON */
+
+.nephron-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 17px;
+}
+
+.nephron-item {
+  background: #F7FAF9;
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.nephron-item strong {
+  font-size: 13px;
+  color: var(--primary);
+}
+
+.nephron-item p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-top: 5px;
+}
+
+/* GLOMERULAR BARRIER */
+
+.filtration-barrier {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.filtration-barrier div {
+  background: var(--mint);
+  padding: 13px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary);
+  border: 1px solid #D3EAE2;
+}
+
+/* SMALL SCREENS */
+
+@media (max-width: 450px) {
+
+  .education-card {
+    padding: 17px;
+  }
+
+  .anatomy-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .kidney-shape {
+    min-height: 145px;
+  }
+
+  .kidney-center span {
+    font-size: 60px;
+  }
+
+}
+
+.section-heading {
+  margin-bottom: 20px;
+}
+
+.eyebrow {
+  color: #168b83;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+}
+
+.education-card h4 {
+  margin: 18px 0 8px;
+  color: #176f6a;
+}
+
+.education-card ul {
+  padding-left: 20px;
+  line-height: 1.7;
+}
+
+.education-card li {
+  margin-bottom: 6px;
+}
+
+.pathway-box {
+  background: #eef8f6;
+  border: 1px solid #d6ece8;
+  border-radius: 14px;
+  padding: 14px;
+  margin: 14px 0;
+  text-align: center;
+}
+
+.pathway-step {
+  background: white;
+  border-radius: 10px;
+  padding: 11px;
+  color: #245c59;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.pathway-arrow {
+  color: #168b83;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 4px;
+}
+
+.two-column-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.two-column-info > div {
+  background: #f2f8f7;
+  border-radius: 12px;
+  padding: 12px;
+  min-width: 0;
+}
+
+.comparison-table {
+  overflow-x: auto;
+  margin: 14px 0;
+  border: 1px solid #dce9e7;
+  border-radius: 12px;
+}
+
+.comparison-row {
+  display: grid;
+  grid-template-columns: 0.8fr 1.5fr 1.5fr;
+  min-width: 480px;
+  border-bottom: 1px solid #e4eeec;
+}
+
+.comparison-row:last-child {
+  border-bottom: none;
+}
+
+.comparison-row span {
+  padding: 10px;
+  font-size: 12px;
+  line-height: 1.5;
+  border-right: 1px solid #e4eeec;
+}
+
+.comparison-row span:last-child {
+  border-right: none;
+}
+
+.comparison-header {
+  background: #eaf5f3;
+  color: #176f6a;
+  font-weight: 800;
+}
+
+.small-note {
+  color: #687b79;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.source-card a {
+  display: inline-block;
+  margin: 4px 0 14px;
+  color: #168b83;
+  font-weight: 700;
+}
+
+@media (max-width: 520px) {
+  .two-column-info {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* KIDNEY RISK SCANNER */
+
+.risk-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  margin: 10px 0;
+  background: #f0f8f7;
+  border: 1px solid #d6eae7;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #244b47;
+  font-size: 14px;
+}
+
+.risk-option input {
+  width: 18px;
+  height: 18px;
+  accent-color: #16877d;
+  flex-shrink: 0;
+}
+
+.primary-button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 18px;
+  border: none;
+  border-radius: 12px;
+  background: #176b63;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary-button:hover {
+  background: #10564f;
+}
+
+#riskResult {
+  margin-top: 18px;
+}
+
+/* KIDNEY PREVENTION */
+
+.prevention-card {
+  border-left: 4px solid #16877d;
+  transition: transform 0.2s ease;
+}
+
+.prevention-card:hover {
+  transform: translateY(-2px);
+}
+
+.prevention-card ul {
+  padding-left: 22px;
+  line-height: 1.8;
+  color: #42615d;
+}
+
+.prevention-card li {
+  margin-bottom: 6px;
+}
+
+/* KIDNEY FUN ZONE */
+
+.quiz-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.quiz-heading {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.quiz-label {
+  color: #16877d;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.quiz-heading h2 {
+  color: #174e49;
+  margin: 10px 0;
+}
+
+.quiz-heading p,
+.quiz-note {
+  color: #718985;
+  font-size: 14px;
+}
+
+.quiz-progress {
+  margin-bottom: 20px;
+}
+
+.quiz-progress-info {
+  display: flex;
+  justify-content: space-between;
+  color: #42615d;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.quiz-progress-track {
+  height: 9px;
+  background: #e4f0ee;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.quiz-progress-fill {
+  height: 100%;
+  background: #16877d;
+  border-radius: 20px;
+  transition: width .3s ease;
+}
+
+.quiz-card {
+  background: white;
+  border: 1px solid #e0eeeb;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 5px 20px rgba(30, 90, 80, .06);
+}
+
+.quiz-card h3 {
+  color: #244b47;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.quiz-options {
+  display: grid;
+  gap: 12px;
+}
+
+.quiz-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px;
+  border: 1px solid #dceae7;
+  border-radius: 12px;
+  background: #f8fbfa;
+  color: #355650;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.quiz-option:hover:not(:disabled) {
+  border-color: #16877d;
+  background: #eef8f6;
+}
+
+.quiz-option:disabled {
+  cursor: default;
+}
+
+.quiz-option-letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #e3f1ee;
+  color: #176b63;
+  font-weight: 700;
+}
+
+.quiz-option.correct {
+  background: #e5f6ec;
+  border-color: #3aab70;
+}
+
+.quiz-option.incorrect {
+  background: #fff0ef;
+  border-color: #dc7770;
+}
+
+.quiz-explanation {
+  margin-top: 18px;
+  padding: 15px;
+  border-radius: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.quiz-explanation p {
+  margin: 7px 0 0;
+}
+
+.correct-feedback {
+  background: #eaf7ef;
+  color: #246b45;
+}
+
+.wrong-feedback {
+  background: #fff3ed;
+  color: #94533e;
+}
+
+.quiz-note {
+  text-align: center;
+  margin-top: 18px;
+  line-height: 1.5;
+}
+
+.quiz-result {
+  text-align: center;
+  padding: 35px 20px;
+  background: white;
+  border-radius: 18px;
+  border: 1px solid #e0eeeb;
+}
+
+.quiz-result-icon {
+  font-size: 55px;
+  margin-bottom: 15px;
+}
+
+.quiz-result h2 {
+  color: #174e49;
+}
+
+.quiz-score {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 25px 0;
+}
+
+.quiz-score strong {
+  color: #16877d;
+  font-size: 48px;
+}
+
+.quiz-score span {
+  color: #718985;
+  font-size: 14px;
+}
+
+.quiz-result > p {
+  color: #526d68;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+.quiz-result .primary-button {
+  max-width: 250px;
+}
+
+/* KIDNEY FLASHCARDS */
+
+
+/* KIDNEY FLASHCARDS */
+
+.flashcard-container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.flashcard-heading {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.flashcard-heading h2 {
+  color: #174e49;
+  margin: 10px 0;
+}
+
+.flashcard-heading p {
+  color: #718985;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* COUNTER */
+
+.flashcard-counter {
+  text-align: center;
+  color: #16877d;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+/* PROGRESS BAR */
+
+.flashcard-progress {
+  height: 8px;
+  background: #e4f0ee;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+.flashcard-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #176b63, #45b39d);
+  border-radius: 20px;
+  transition: width .35s ease;
+}
+
+/* 3D FLIP CARD */
+
+.flashcard-scene {
+  perspective: 1000px;
+  min-height: 280px;
+}
+
+.flashcard {
+  width: 100%;
+  min-height: 280px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform .65s ease;
+  cursor: pointer;
+}
+
+.flashcard.flipped {
+  transform: rotateY(180deg);
+}
+
+.flashcard-face {
+  position: absolute;
+  inset: 0;
+  min-height: 280px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 22px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 8px 25px rgba(30, 90, 80, .08);
+}
+
+.flashcard-front {
+  background: linear-gradient(135deg, #e3f5f1, #f5fbf9);
+  border: 2px solid #c9e8e1;
+}
+
+.flashcard-back {
+  background: linear-gradient(135deg, #176b63, #279b8d);
+  border: 2px solid #176b63;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.flashcard-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #16877d;
+}
+
+.flashcard-back .flashcard-label {
+  color: #d2f4eb;
+}
+
+.flashcard-face h3 {
+  font-size: 21px;
+  line-height: 1.6;
+  margin: 18px 0;
+  color: #244b47;
+}
+
+.flashcard-back h3 {
+  color: white;
+}
+
+.flashcard-face p {
+  font-size: 12px;
+  color: #718985;
+}
+
+.flashcard-back p {
+  color: #e1f5ef;
+}
+
+/* BUTTONS */
+
+.flashcard-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.flash-button {
+  flex: 1;
+  padding: 12px 8px;
+  border: 1px solid #d5e8e3;
+  border-radius: 10px;
+  background: white;
+  color: #176b63;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.flash-button:hover:not(:disabled) {
+  background: #e7f4f1;
+}
+
+.flash-button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.flash-primary {
+  background: #176b63;
+  color: white;
+  border-color: #176b63;
+}
+
+.flash-primary:hover:not(:disabled) {
+  background: #10564f;
+}
+
+.flash-shuffle {
+  display: block;
+  margin: 18px auto 0;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 10px;
+  background: #e7f4f1;
+  color: #176b63;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.flash-shuffle:hover {
+  background: #d5ebe5;
+}
+
+@media (max-width: 480px) {
+  .flashcard-scene,
+  .flashcard,
+  .flashcard-face {
+    min-height: 250px;
+  }
+
+  .flashcard-face {
+    padding: 22px;
+  }
+
+  .flashcard-face h3 {
+    font-size: 18px;
+  }
+
+  .flashcard-controls {
+    flex-wrap: wrap;
+  }
+
+  .flash-button {
+    font-size: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flashcard,
+  .flashcard-progress-fill {
+    transition: none;
+  }
+}
+
+
+/* KIDNEY FUN ZONE MENU */
+
+.funzone-container {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.funzone-heading {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.funzone-heading h2 {
+  color: #174e49;
+  margin: 12px 0;
+}
+
+.funzone-heading p {
+  color: #718985;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.funzone-menu {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.funzone-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px;
+  padding: 24px;
+  background: white;
+  border: 1px solid #dcece8;
+  border-radius: 18px;
+  text-align: left;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.funzone-card:hover {
+  transform: translateY(-4px);
+  border-color: #16877d;
+  box-shadow: 0 8px 20px rgba(30, 90, 80, .09);
+}
+
+.funzone-icon {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  font-size: 29px;
+}
+
+.quiz-icon {
+  background: #fff0f3;
+}
+
+.flashcard-icon {
+  background: #e8f5ef;
+}
+
+.funzone-text h3 {
+  color: #244b47;
+  margin: 0 0 8px;
+}
+
+.funzone-text p {
+  color: #718985;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.funzone-text span {
+  color: #16877d;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+@media (max-width: 500px) {
+  .funzone-menu {
+    grid-template-columns: 1fr;
+  }
+}
+/* NEPHRON ANATOMY IMAGE */
+
+.nephron-image-box {
+  background: linear-gradient(145deg, #E7F2EF, #D3EAE2);
+  border-radius: 18px;
+  padding: 15px;
+  margin: 18px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nephron-anatomy-image {
+  width: 100%;
+  max-width: 380px;
+  height: 260px;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 450px) {
+  .nephron-anatomy-image {
+    height: 220px;
+  }
+}
+/* GLOMERULUS ANATOMY IMAGE */
+
+.glomerulus-image-box {
+  background: linear-gradient(145deg, #E7F2EF, #D3EAE2);
+  border-radius: 18px;
+  padding: 15px;
+  margin: 18px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glomerulus-anatomy-image {
+  width: 100%;
+  max-width: 380px;
+  height: 250px;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 450px) {
+  .glomerulus-anatomy-image {
+    height: 210px;
+  }
+}

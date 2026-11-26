@@ -1,28 +1,58 @@
-const CACHE_NAME = "osmira-cache-v1";
+
+const CACHE_NAME = "osmira-v1";
+
 const APP_FILES = [
   "./",
   "./index.html",
-  "./manifest.webmanifest",
-  "./icons/icon-192.svg",
-  "./icons/icon-512.svg"
+  "./style.css",
+  "./script.js",
+  "./manifest.json",
+  "./osmira-icon-192.png",
+  "./osmira-icon-512.png"
 ];
-self.addEventListener("install", event => {
-  event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(APP_FILES)));
+
+// Install service worker
+self.addEventListener("install", (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return cache.addAll(APP_FILES);
+    })
+  );
+
   self.skipWaiting();
 });
-self.addEventListener("activate", event => {
+
+// Activate service worker
+self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then(keys => Promise.all(keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))))
+    caches.keys().then((cacheNames) => {
+      return Promise.all(
+        cacheNames
+          .filter((name) => name !== CACHE_NAME)
+          .map((name) => caches.delete(name))
+      );
+    })
   );
+
   self.clients.claim();
 });
-self.addEventListener("fetch", event => {
+
+// Handle requests
+self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
+
+  const requestURL = new URL(event.request.url);
+
+  // Cache hanya file dari website OSMIRA sendiri
+  if (requestURL.origin !== self.location.origin) return;
+
   event.respondWith(
-    caches.match(event.request).then(cached => cached || fetch(event.request).then(response => {
-      const copy = response.clone();
-      caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
-      return response;
-    }).catch(() => caches.match("./index.html")))
+    caches.match(event.request).then((cachedResponse) => {
+      if (cachedResponse) return cachedResponse;
+
+      return fetch(event.request).then((response) => {
+        return response;
+      });
+    })
   );
 });

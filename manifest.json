@@ -1,0 +1,28 @@
+
+
+{
+  "name": "OSMIRA - Kidney Health Education",
+  "short_name": "OSMIRA",
+  "description": "Aplikasi edukasi kesehatan ginjal interaktif",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F7FAF9",
+  "theme_color": "#176B63",
+  "icons": [
+    {
+      "src": "./osmira-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./osmira-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
+
